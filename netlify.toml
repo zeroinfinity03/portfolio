@@ -1,6 +1,36 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  base = "deeply-dwarf"
 
 [build.environment]
   NODE_VERSION = "18"
+  NPM_FLAGS = "--legacy-peer-deps"
+
+[dev]
+  command = "npm run dev"
+  port = 3000
+  publish = "dist"
+
+# Netlify Functions config
+[functions]
+  directory = "netlify/functions"
+
+# Form handling
+[forms]
+  contact = { name = "Contact Form" }
+
+# Redirects and rewrites
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers for security and caching
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    X-XSS-Protection = "1; mode=block"
