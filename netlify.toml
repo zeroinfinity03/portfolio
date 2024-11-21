@@ -1,4 +1,14 @@
 [build]
   base = "deeply-dwarf"
   command = "npm run build"
-  publish = "dist" 
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Uncomment if you want to use forms
+[forms]
+  contact = { name = "Contact Form" } 
